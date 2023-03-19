@@ -1,0 +1,51 @@
+1. Set up Github
+   Agenda:
+    - set new environment
+    - setup.py
+    - requirements.txt
+
+- Create new github repo on your Github ID (ML_Project)
+- Create separate environment
+    - $ conda create -p venv python==3.8 -y
+    - $ conda activate venv/
+
+- Now we need to initialize the Git to keep in sync
+    - $ git init
+
+    - Create README.md file from EXPLORER
+    - $ git add README.md 
+    - $ git commit -m "First Commit"
+    - $ git status
+    - $ git branch -M main
+    - $ git remote add origin https://github.com/morekajal/ML_Project.git
+    - $ git remote -v
+
+- If working on first time to sync with github : https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+    - $ git config --global user.name "Kajal More"
+    - $ git config --global user.email 2018mec004@sggs.ac.in
+
+    - To check your git hub is sync or not : $ git config --global user.email 
+
+    - $ git push -u origin main   : To upload file from local to main branch
+
+    - Add file from git Project by clicking Add File -> New File -> name as .gitignore -> choose from .gitignore.None(from right side) -> Select python -> Commit changes
+    - $ git pull
+
+- Create new files from Explorer -> setup.py, requirements.txt
+- Setup.py : will be responsible in creating our ML application as a package, so anyone in future can use this in future by installing it as package
+- How the setup.py file will get to know about the packages installed ??
+- For this create a source folder -> src 
+- with the __init__.py in each folder -> module will get to know about packages installed or required
+- Entire pipeline code will be inside src folder
+
+- It's not feasible to write entire packages in -> install_requires = ['pandas', 'numpy', 'seaborn']
+- So, will define a function -> get requirements which will refer from requirements.txt
+- Now, when the function tries to read line by line in requirements.txt, for the next line \n will be getting read hiddenly -> this we need to replace with blank space while reading the file
+- Now, when we need to install requirements, the setup.py file should get executed -> add -e. at the end in the requirements.txt file to trigger setup.py 
+- But this -e. shuould not come while reading requirements.txt -> modified in function accordingly.
+
+- $ pip install -r requirements.txt 
+
+- After successful execution of installation -> mlproject.egg.info folder is getting created in the Explorer window
+
+
